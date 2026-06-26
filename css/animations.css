@@ -1,0 +1,85 @@
+/* ============================================================
+   ANIMATIONS — keyframes & motion utilities
+   ============================================================ */
+
+/* Loader cross draw */
+@keyframes draw-cross {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Floating cards */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Hero floating cards (rebuilt) */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes floatC {
+  0%, 100% { transform: translateY(-50%); }
+  50% { transform: translateY(calc(-50% - 8px)); }
+}
+
+/* Navbar CTA pulsing ring */
+@keyframes navPulse {
+  0% { box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(139, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(139, 0, 0, 0); }
+}
+
+/* Pulse ring (status dot) */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Spinner */
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* SVG draw (success checkmark) */
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+/* Fade up (fallback if AOS/GSAP unavailable, applied via .reveal) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Float utility classes */
+.float-card { animation: float 3s ease-in-out infinite; }
+.float-card.status { animation-delay: 1.5s; }
+.float-card.rating { animation-delay: 0s; }
+
+/* Subtle gradient shimmer for map placeholder */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Reveal-on-scroll fallback used when JS libs fail to load */
+.no-aos [data-aos] { opacity: 1 !important; transform: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* Catch-all: no element should loop or move for motion-sensitive users. */
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .float-card-3 { transform: translateY(-50%) !important; }
+  .loader-cross path { stroke-dashoffset: 0 !important; }
+}
