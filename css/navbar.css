@@ -119,7 +119,11 @@
 }
 .mobile-menu a:hover, .mobile-menu a.active { color: #fff; transform: scale(1.05); }
 .mobile-menu a.active { text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 2px; }
-.mobile-menu .btn { margin-top: 22px; }
+.mobile-menu .btn { margin-top: 22px; font-family: var(--font-head); font-size: 0.98rem; }
+/* The white CTA pill needs its dark-red label back — .mobile-menu a was
+   overriding .btn-white and rendering the text white-on-white. */
+.mobile-menu .btn-white { color: var(--primary); }
+.mobile-menu .btn-white:hover { color: var(--primary-dark); }
 .mobile-menu .mobile-phone { margin-top: 8px; color: rgba(255,255,255,0.8); font-family: var(--font-head); font-weight: 600; }
 
 @media (max-width: 980px) {

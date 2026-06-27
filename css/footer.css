@@ -25,7 +25,7 @@
   letter-spacing: 0.02em;
 }
 
-.footer-logo svg { height: 46px; width: auto; margin-bottom: 20px; }
+.footer-logo svg, .footer-logo img { height: 46px; width: auto; display: block; margin-bottom: 20px; }
 .footer-tagline { font-size: 0.95rem; line-height: 1.7; max-width: 280px; margin-bottom: 24px; }
 
 .footer-links { display: flex; flex-direction: column; gap: 12px; }
