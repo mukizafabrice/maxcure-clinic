@@ -125,5 +125,30 @@
 @media (max-width: 980px) {
   .nav-links, .nav-phone { display: none; }
   .nav-toggle { display: flex; }
+
+  /* Solid, readable app-bar on phones — no see-through over scrolling content */
+  .navbar { background: #fff; border-bottom: 1px solid var(--border); }
+  .navbar.scrolled { box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08); }
+
+  .nav-inner { padding: 0 16px; gap: 12px; }
+  .nav-logo-img { height: 36px; }
+
+  /* Keep a compact "Book" CTA in the bar — primary action stays one tap away */
+  .nav-actions { gap: 10px; }
+  .nav-actions .btn {
+    display: inline-flex;
+    padding: 9px 16px;
+    min-height: 38px;
+    font-size: 0.8rem;
+    animation: none;
+  }
+  /* Shorten the bar CTA to just "Book" on phones (full label kept on desktop) */
+  .nav-actions .btn .cta-rest { display: none; }
+}
+
+/* Very small phones: drop the inline CTA so the bar doesn't crowd the hamburger */
+@media (max-width: 430px) {
   .nav-actions .btn { display: none; }
+  .nav-inner { padding: 0 14px; }
+  .nav-logo-img { height: 32px; }
 }

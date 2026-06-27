@@ -57,7 +57,8 @@ body {
   font-size: 16px;
   line-height: 1.65;
   color: var(--text);
-  background: var(--white);
+  /* background: var(--white); */
+  background: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -116,7 +117,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height
 .btn:active { transform: translateY(0) scale(0.98); }
 .btn:focus-visible { outline: 3px solid rgba(139, 0, 0, 0.4); outline-offset: 3px; }
 
-.btn-primary { background: var(--primary); box-shadow: 0 8px 22px rgba(139, 0, 0, 0.25); color: #000; }
+.btn-primary { background: var(--primary); box-shadow: 0 8px 22px rgba(139, 0, 0, 0.25); color: #fff; }
 .btn-primary:hover { background: var(--primary-dark); box-shadow: var(--shadow-hover); }
 
 .btn-ghost { background: transparent; color: var(--primary); border: 2px solid var(--border); }
@@ -477,9 +478,17 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height
   .why-grid { grid-template-columns: 1fr; gap: 36px; }
   .why-intro { max-width: none; }
 }
-@media (max-width: 560px) {
+@media (max-width: 600px) {
   .why-features { grid-template-columns: 1fr; gap: 0; }
-  .why-features .why-feature { padding: 22px 0; border-right: none; border-bottom: 1px solid var(--border); }
+  /* Match the :nth-child specificity above so the desktop divider
+     padding/borders are fully reset in the stacked mobile layout. */
+  .why-features .why-feature,
+  .why-features .why-feature:nth-child(-n+2),
+  .why-features .why-feature:nth-child(odd) {
+    padding: 22px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
   .why-features .why-feature:first-child { padding-top: 0; }
   .why-features .why-feature:last-child { border-bottom: none; padding-bottom: 0; }
 }
@@ -846,6 +855,22 @@ textarea.form-control { min-height: 120px; resize: vertical; }
   .page-hero p { font-size: 1.02rem; }
   .image-hero { min-height: auto; padding: 116px 0 56px; }
   .image-hero p { font-size: 1.02rem; }
+  /* On phones, match the clean maroon gradient used by the other page heroes
+     (Vanta WebGL waves are heavy and look off on small screens) */
+  .image-hero {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary) 55%, var(--primary-light));
+  }
+  .image-hero .vanta-bg,
+  .image-hero .img-overlay { display: none; }
+  .image-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+    background-size: 26px 26px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
 
   /* Banners / sections breathe better */
   .cta-banner { padding: 48px 22px; }
@@ -861,7 +886,6 @@ textarea.form-control { min-height: 120px; resize: vertical; }
 
 @media (max-width: 380px) {
   .hero-headline { font-size: 23px; }
-  .nav-logo-img { height: 30px; }
 }
 
 /* ============================================================
