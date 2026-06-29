@@ -290,6 +290,11 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height
   position: relative;
   background: var(--white);
   border-bottom: 1px solid var(--border);
+  /* Fill the viewport below the 60px sticky navbar so the next section
+     ("Our Specialties") doesn't peek above the fold on tall screens. */
+  min-height: calc(100vh - 60px);
+  display: grid;
+  align-items: center;
 }
 .hero-inner {
   max-width: 1180px;
